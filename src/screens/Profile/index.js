@@ -1,6 +1,6 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Txt, Btn, Header } from "../../components";
+import { View, Text, StyleSheet } from "react-native";
+import { Txt, Btn, Header, Card, Input, SearchInput } from "../../components";
 
 const Profile = ({ navigation }) => {
   const goToNext = () => {
@@ -13,11 +13,11 @@ const Profile = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Header title="Read Books" icon />
+      <Card type="small" />
+      <Input />
 
-      <Txt title="Read Books" h1 bold />
-      <Txt title="Read Books" h2 />
-      <Txt title="Read Books" h3 />
-      <Txt title="Read Books" h4 />
+      <Input icon />
+      <SearchInput />
 
       <Btn type="round" onPress={checkTest} title={"Round"} />
 

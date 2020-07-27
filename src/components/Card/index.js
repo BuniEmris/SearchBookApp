@@ -1,57 +1,54 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-import colors from "../../helpers/colors";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexWrap: "wrap",
+  },
   smallCardStyle: {
-    width: 50,
-    height: 50,
+    alignItems: "center",
+    width: 71,
+    height: 107,
     borderRadius: 8,
-    backgroundColor: colors.black,
+    backgroundColor: "black",
     resizeMode: "contain",
+    margin: 10,
   },
   bigCardStyle: {
-    width: 200,
-    height: 200,
+    alignItems: "center",
+    width: 130,
+    height: 203,
     borderRadius: 8,
-    backgroundColor: "blue",
+    backgroundColor: "brown",
     resizeMode: "contain",
+    margin: 10,
   },
 });
 
-const Card = ({ onPress, image }) => {
-  const { smallCardStyle, bigCardStyle } = styles;
+const Card = ({ onPress, type, style }) => {
+  const { container, bigCardStyle, smallCardStyle } = styles;
+  const bigImg = require("../../../assets/reactBooktest.png");
+  const smallImg = require("../../../assets/reactBooktest.png");
 
-  const cardImages = (size) =>
+  const cardStyle = (size) =>
     ({
       small: smallCardStyle,
       big: bigCardStyle,
     }[size]);
 
+  const cardSize = (size) =>
+    ({
+      small: smallImg,
+      big: bigImg,
+    }[size]);
+
   return (
-    <View style={{ alignItems: "center" }}>
-      <FlatList
-        data={DATA}
-        renderItem={({ item }) => (
-          <View>
-            {image ? (
-              <TouchableOpacity onPress={onPress}>
-                <Image source={uri("")} style={styles.bigCardStyle} />
-              </TouchableOpacity>
-            ) : (
-              <Image source={uri("")} style={styles.smallCardStyle} />
-            )}
-          </View>
-        )}
-      />
+    <View style={container}>
+      <TouchableOpacity onPress={onPress} style={[cardStyle(type), style]}>
+        <Image source={cardSize(type)} style={cardStyle(type)} />
+      </TouchableOpacity>
     </View>
   );
 };
-
 export { Card };
