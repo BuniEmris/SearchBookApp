@@ -11,30 +11,30 @@ import { Feather } from "@expo/vector-icons";
 
 const styles = StyleSheet.create({
   inputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
     borderRadius: 8,
     width: 300,
     height: 48,
-    backgroundColor: colors.white,
+    backgroundColor: colors.white, //,
     padding: 10,
     margin: 10,
+    borderBottomWidth: 5,
+    borderBottomColor: colors.btnColor,
   },
 
   hideEye: {
     width: 30,
     height: 30,
-    left: 260,
-    top: -20,
   },
 });
 
-const Input = ({ icon, type, inputValue }) => {
+const Input = ({ icon, type, onChangeText }) => {
   const { inputContainer, hideEye, inputStyle } = styles;
-  const [password, setPassword] = useState("");
 
   const [showPass, setShowPass] = useState(false);
-  const passwordValue = (val) => {
-    setPassword(val);
-  };
+
   const myStyle = (size) =>
     ({
       hide: hideEye,
@@ -48,7 +48,11 @@ const Input = ({ icon, type, inputValue }) => {
   return (
     <View style={[myStyle(type), inputStyle]}>
       <View style={styles.inputContainer}>
-        <TextInput secureTextEntry={showPass} onChangeText={passwordValue} />
+        <TextInput
+          placeholder="type"
+          secureTextEntry={showPass}
+          onChangeText={onChangeText}
+        />
         {icon ? (
           <TouchableOpacity onPress={showOrHide} style={styles.hideEye}>
             <Feather

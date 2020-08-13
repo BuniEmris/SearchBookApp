@@ -13,7 +13,7 @@ import {
   Register,
   Login,
   SearchBook,
-  BookList,
+  BookDetails,
   BookReview,
   SearchError,
 } from "./src/screens";
@@ -34,9 +34,21 @@ export default function App() {
   return (
     <NavigationContainer>
       {fontsLoaded ? (
-        <Stack.Navigator initialRouteName="Profile">
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+          initialRouteName="Profile"
+        >
           <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Review" component={Review} />
           <Stack.Screen name="Share" component={Share} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="SearchBook" component={SearchBook} />
+          <Stack.Screen name="BookDetails" component={BookDetails} />
+          <Stack.Screen name="BookReview" component={BookReview} />
+          <Stack.Screen name="SearchError" component={SearchError} />
         </Stack.Navigator>
       ) : null}
     </NavigationContainer>

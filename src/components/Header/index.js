@@ -9,35 +9,29 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "24%",
     backgroundColor: colors.secondary,
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 20,
   },
 });
 
-const Header = ({ onPress, title, icon = false }) => {
+const Header = ({ onPress, text, title, icon = false }) => {
   return (
     <View style={styles.main}>
       <View
         style={{
           flexDirection: "row",
+          justifyContent: "flex-start",
           alignItems: "center",
         }}
       >
         {icon ? (
-          <TouchableOpacity onPress={onPress}>
-            <AntDesign
-              name="arrowleft"
-              size={35}
-              color="white"
-              style={{ margin: 10 }}
-            />
+          <TouchableOpacity onPress={onPress} style={{ marginTop: 30 }}>
+            <AntDesign name="arrowleft" size={35} color="white" />
           </TouchableOpacity>
         ) : (
           <View />
         )}
-        <Txt
-          title={title}
-          textStyle={{ color: "white", marginLeft: 80, marginTop: 40 }}
-          h2
-        />
+        <Txt title={title} textStyle={text} h2 />
       </View>
     </View>
   );

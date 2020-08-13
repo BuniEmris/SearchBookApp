@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { TouchableOpacity, StyleSheet, Text } from "react-native";
 import colors from "../../helpers/colors";
 import { AntDesign } from "@expo/vector-icons";
-import { Txt } from "../Txt";
+import { Txt } from "../Txt/index";
 
 const styles = StyleSheet.create({
   roundStyle: {
@@ -19,12 +19,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: colors.btnColor,
     height: 56,
-    width: 315,
+    width: 320,
     alignItems: "center",
     justifyContent: "center",
   },
   textButtonStyle: {
-    fontSize: 50,
     color: colors.txtColor,
     textDecorationLine: "underline",
   },
@@ -44,13 +43,13 @@ const Btn = ({ onPress, title, type, textBtn = false }) => {
         <AntDesign name="arrowright" size={26} color="white" />
       ) : (
         <Txt
+          h3
           title={title}
           textStyle={[
             textBtn
               ? textButtonStyle
               : { color: "white", textTransform: "uppercase" },
           ]}
-          h4
         />
       )}
     </TouchableOpacity>
